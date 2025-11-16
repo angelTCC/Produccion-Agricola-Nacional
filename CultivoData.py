@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import unicodedata
 
-
+import argparse
 import unicodedata
 
 def remove_tildes(text):
@@ -11,8 +11,9 @@ def remove_tildes(text):
         if unicodedata.category(c) != 'Mn'
     )
 
-
-cultivo = "caigua"
+parser = argparse.ArgumentParser()
+parser.add_argument("--cultivo")
+cultivo = parser.parse_args().cultivo
 paths = [
     '2730325-cuadros-en-excel-del-anuario-produccion-agricola-2022.xlsx',
     'Cuadros en Excel del anuario _PRODUCCIÓN AGRÍCOLA_ 2021.xls',
@@ -35,7 +36,12 @@ for year, table in zip(years, paths):
         # nombre de la tabla
         for i in data.loc[start,:].dropna().values: # imprimiendo el titulo de la tabla
             if type(i)!=np.float64:
-                name_table = remove_tildes(i.split(":")[1].split(",")[0].strip()).split(cultivo)[0] +" "+ cultivo
+                name_table = (
+                    remove_tildes( i.split(":")[1]
+                                  .split(",")[0]
+                                  .strip())
+                                  .split(cultivo)[0] + cultivo
+                                  ).lower()
         
         # data de la tabla
         df = data.loc[start+2:start+2+28,:].dropna(axis=1, how="all").reset_index(drop=True)
@@ -118,9 +124,45 @@ if concat_succes==True:
 
             df['d-m-y'] = "1/"+ df['meses'].map(mes_map).astype(str) +"/"+ df.year.astype(str)
             df.drop(columns=['year', "meses"], inplace=True)
+            df = df[["Región","value","d-m-y"]]
+            
+            ## cambiando llos nombres de las columnas
+            for column_name in ["sembrada", "cosechada", "produccion", "precio", "rendimiento"]:
+                if column_name in name_table:
+                    df = df.rename(columns={'value': column_name})
 
             tables[name_table] = df
     print("el concat fue realizado con exito ................")
 else:
     print("concat no realizado ..................")
 
+
+"""
+se join las tablas, solo se consideran si la fecha esta en todas las tablas
+"""
+
+tables_6 = []
+for name in tables:
+    if tables[name].shape[1] == 3:
+        tables_6.append(name)
+
+df = tables[tables_6[0]]
+for name in tables_6[1:]:
+    print(tables[name].columns.values)
+
+    df = df.merge(
+        tables[name],
+        on=["Región", "d-m-y"],
+        how="inner"
+    )
+print("tablas join comleted, mensual ...........")
+
+# palabras clave: sembrada, cosechada, Produccion, Precio
+df.to_csv( "data.csv" ,index=False)
+print("Data guardado:", df.columns.values)
+"""
+for name in tables:
+    if "precio" in name:
+        df.to_csv( "data.csv" ,index=False)
+        
+"""

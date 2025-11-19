@@ -70,6 +70,8 @@ The **Random Forest** model shows strong performance in predicting the **price o
 
 **Conclusion:**
 
+![](./img/papa-1.png)
+
 Analicé cientos de cultivos usando una métrica de estabilidad basada en precio y producción.
 La papa destacó como uno de los cultivos más estables del país.
 

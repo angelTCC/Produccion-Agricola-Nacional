@@ -47,9 +47,8 @@ Mientras que:
 
 En general, el sector mantiene una **tendencia creciente** desde 2019, impulsada por mejoras en rendimiento y estabilidad productiva.
 
----
 
-### 🤖 **Machine Learning: Price Prediction**
+### 🤖 Machine Learning: Price Prediction
 
 The **Random Forest** model shows strong performance in predicting the **price of agricultural products** using production and regional characteristics.
 
@@ -64,6 +63,21 @@ The **Random Forest** model shows strong performance in predicting the **price o
 
 ---
 
-## 🛠 Page 2: **In construction...**
+## 🛠 Page 2: Potato Market Insights 2019–2022
 
-More insights, visualizations, and ML models are coming soon!
+**Main question:**
+> How did the stability, price behavior, and production of Peru’s potato crop evolve between 2019 and 2022, and which regions and months offered the strongest opportunities for profitability based on seasonal peaks and supply-driven price changes?
+
+**Conclusion:**
+
+Analicé cientos de cultivos usando una métrica de estabilidad basada en precio y producción.
+La papa destacó como uno de los cultivos más estables del país.
+
+- 📈 El precio subió de S/ 0.42 a S/ 1.40 (2020–2022).
+- 🌱 Producción estacional: pico en mayo, mínimo en agosto–septiembre.
+- 🏅 La Libertad: mejor combinación de volumen y precio.
+- ⚠️ Tacna: precios altos pero oferta muy limitada.
+
+Conclusión: La papa ofrece estabilidad, crecimiento y oportunidades claras para inversión agrícola estratégica.
+
+### 🤖 Machine Learning: 

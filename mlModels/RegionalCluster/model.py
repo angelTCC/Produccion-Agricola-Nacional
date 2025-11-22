@@ -159,26 +159,47 @@ plt.savefig("BIC.png")
 
 fig, axes = plt.subplots(ncols=4, nrows=2, figsize=(20,10))
 
-for cat, ax in zip(['cosechada', 'sembrada', 'produccion', 'rendimiento', 'precio', 'VPH','gm', 'Cluster'], axes.ravel()): 
-    ax.set_axis_off() 
-    if cat == "gm" or cat=="Cluster":
-        ax.set_title(cat)
-        df.plot(column=cat,
-                legend=True, 
-                ax=ax,
-                categorical=True,
-                linewidth=1,
-                edgecolor="black"
-                )
+fig, axes = plt.subplots(ncols=4, nrows=2, figsize=(22, 10))
+fig.suptitle("Indicadores Agrícolas de Papa – Perú", fontsize=20, fontweight="bold")
+
+categorias = ['cosechada', 'sembrada', 'produccion', 'rendimiento',
+              'precio', 'VPH', 'gm', 'Cluster']
+
+for cat, ax in zip(categorias, axes.ravel()):
+    ax.set_axis_off()
+    
+    # Título del subplot con mayúscula inicial
+    ax.set_title(cat.capitalize(), fontsize=12, fontweight="bold")
+
+    if cat in ["gm", "Cluster"]:
+        df.plot(
+            column=cat,
+            categorical=True,
+            legend=True,
+            ax=ax,
+            linewidth=0.5,
+            edgecolor="black",
+            legend_kwds={
+                "loc": "lower left",
+                "fontsize": 8
+            }
+        )
     else:
-        df.plot(column=cat,
-                ax=ax,
-                linewidth=1,
-                edgecolor="black",
-                legend=True, 
-                cmap='OrRd',
-                categorical=False,
-                legend_kwds={"label": cat, "orientation": "horizontal"})
-        
+        df.plot(
+            column=cat,
+            cmap="YlOrBr",
+            legend=True,
+            ax=ax,
+            linewidth=0.5,
+            edgecolor="black",
+            legend_kwds={
+                "label": cat.capitalize(),
+                "orientation": "horizontal",
+                "shrink": 0.7,
+                "pad": 0.02
+            }
+        )
+
+plt.tight_layout(rect=[0, 0, 1, 0.96])
 plt.savefig("region_map_agglomerative.png", dpi=300)    # save the figure
 plt.show()

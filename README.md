@@ -16,7 +16,6 @@ It allows us to explore agricultural performance, economic value, and production
 
 Alongside the dashboard, I developed **machine learning models** for price prediction, which can be tested on Hugging Face.
 
----
 
 ## 📊 **Dashboard**
 
@@ -82,4 +81,5 @@ La papa destacó como uno de los cultivos más estables del país.
 
 Conclusión: La papa ofrece estabilidad, crecimiento y oportunidades claras para inversión agrícola estratégica.
 
-### 🤖 Machine Learning: 
+### 🤖 Machine Learning: Regional segregation
+

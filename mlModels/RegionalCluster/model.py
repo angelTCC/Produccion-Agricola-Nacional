@@ -115,7 +115,7 @@ data = data.rename(columns={"Región": "NOMBDEP"})
 
 # merge dataframe and geopandaframe
 gdf = gdf.merge(data, on=["NOMBDEP"])
-df = gdf[["NOMBDEP", 'sembrada', 'cosechada', 'produccion', 'rendimiento', 'precio', 'VPH', 'IRV', 'Cluster', 'geometry']].copy()
+df = gdf[["NOMBDEP", 'sembrada', 'cosechada', 'produccion', 'rendimiento', 'precio', 'VPH', 'Cluster', 'geometry']].copy()
 
 # plot map
 mapping = {

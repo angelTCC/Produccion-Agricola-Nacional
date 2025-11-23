@@ -62,7 +62,7 @@ The **Random Forest** model shows strong performance in predicting the **price o
 
 ---
 
-## 🛠 Page 2: Potato Market Insights 2019–2022
+## Page 2: Potato Market Insights 2019–2022
 
 **Main question:**
 > How did the stability, price behavior, and production of Peru’s potato crop evolve between 2019 and 2022, and which regions and months offered the strongest opportunities for profitability based on seasonal peaks and supply-driven price changes?
@@ -81,5 +81,34 @@ La papa destacó como uno de los cultivos más estables del país.
 
 Conclusión: La papa ofrece estabilidad, crecimiento y oportunidades claras para inversión agrícola estratégica.
 
-### 🤖 Machine Learning: Regional segregation
+### 🤖 Machine Learning: Potato Production Clustering — Peru
 
+This project analyzes regional potato production in Peru using clustering and geographic visualization.
+
+**🔧 Data**
+
+Features aggregated by region:
+
+* Planted area
+* Harvested area
+* Production
+* Yield
+* Price
+* **Economic value = price × production**
+
+**🧠 Clustering**
+
+* **Agglomerative Clustering:** dendrogram → **3 meaningful clusters**
+* **GMM:** BIC → **11 components**, less interpretable
+
+**🗺️ Results**
+
+GeoPandas maps show that agglomerative clustering clearly separates **low, medium, and high** production regions, matching known patterns (🌄 sierra vs. 🌳 selva).
+
+![](./mlModels/RegionalCluster/map_papa.png)
+
+**📌 Conclusion**
+
+Agglomerative Clustering offers the most coherent and useful segmentation for this dataset.
+
+## 🛠 Page 3: ...
